@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://spbeauditee-npxob5rmz-masarbas-projects.vercel.app','https://spbeauditor-aflzxn900-masarbas-projects.vercel.app','https://spbeadmin-cqe060lf3-masarbas-projects.vercel.app'],
+    'allowed_origins' => ['https://spbeauditee.vercel.app','https://spbeauditor-aflzxn900-masarbas-projects.vercel.app','https://spbeadmin-cqe060lf3-masarbas-projects.vercel.app'],
 
     'allowed_origins_patterns' => [],
 
