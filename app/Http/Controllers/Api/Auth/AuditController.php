@@ -151,7 +151,7 @@ class AuditController extends Controller
                     ? round(($categoryTotalScore / ($categoryTotalQuestions * 1)) * 100, 2)
                     : 0;
 
-                    $kesimpulan = $this->getQualitativeLabel($categoryTotalScore);
+                    $kesimpulan = $this->getTotalKesimpulan($categoryScorePercentage);
 
                 $categoryScores[] = [
                     'category' => $group['category'],
