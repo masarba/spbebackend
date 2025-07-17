@@ -570,25 +570,149 @@ class AuditController extends Controller
         // Jika belum ada pertanyaan untuk audit ini, buat pertanyaan baru
         if ($questions->isEmpty()) {
             $defaultQuestions = [
-                'Keamanan Jaringan' => [
-                    'Apakah firewall telah dikonfigurasi dengan benar?',
-                    'Apakah terdapat mekanisme deteksi intrusi pada jaringan?',
-                    'Apakah enkripsi digunakan dalam komunikasi internal?'
+                'Pedoman Manajemen Keamanan Informasi SPBE' => [
+                    'Apakah instansi anda sudah memiliki pedoman manajemen keamanan informasi?',
+                    'Apakah pedoman manajemen keamanan informasi sudah dikomunikasikan ke seluruh pegawai instansi?',
+                    'Apa saja ruang lingkup manajemen keamanan informasi pada pedoman manajemen keamanan informasi?',
+                    'Apakah pernah dilakukan identifikasi terkait isu internal keamanan informasi di dalam organisasi?',
+                    'Apakah pernah dilakukan identifikasi terkait isu eksternal keamanan informasi?',
+                    'Apakah sudah ada pembentukan tim koordinasi SPBE di instansi anda? Dalam bentuk / instrumen hukum apa penetapan tim koordinasi SPBE di instansi anda?',
+                    'Bagaimana metode dalam melakukan perencanaan (program kerja, dsb) keamanan SPBE?',
+                    'Apakah instansi anda sudah melakukan identifikasi risiko keamanan?',
+                    'Apakah instansi anda memiliki program kerja keamanan SPBE dan disusun berdaarka priortas?',
+                    'Apakah instansi anda sudah melakukan program kerja berupa edukasi keamanan SPBE?',
+                    'Apakah instansi anda sudah melakukan inventarisasi aset SPBE (data, informasi, aplikasi dan infrastuktur)?',
+                    'Apakah instansi anda sudah melakukan identifikasi kerentanan dan ancaman pada aset SPBE?',
+                    'Apakah instansi anda sudah melakukan penilaian risiko keamanan SPBE?',
+                    'Sebutkan program kerja keamanan SPBE yang terkait dengan peningkatan keamanan SPBE? Atau sebutkan nomor progam kerja-nya yang merujuk pada jawaban point 9?',
+                    'Sebutkan standar teknis dan prosedur keamanan yang dimiliki instansi anda?',
+                    'Apakah instansi anda sudah pernah melakukan pengujian fungsi keamanan pada aplikasi dan infrastruktur SPBE?',
+                    'Bagamana instansi anda dalam melakukan penanganan insiden keamanan?',
+                    'Apakah instansi anda menetapkan dokumen perencanaan beserta jadwal target realisasi program kerja keamanan SPBE pada tahun ini?',
+                    'Bagaimana mekanisme pemenuhan SDM terkait keamanan SPBE?',
+                    'Apakah sudah dilakukan identifikasi kompetensi SDM terkait keamanan SPBE?',
+                    'Apakah instnsi anda memiliki dokumen terkait daftar personil keamanan SPBE yang dimiliki saat ini, serta kompetensi masing-masing personil?',
+                    'Bagaimana mekanisme peningkatan kompetensi SDM terkait keamanan SPBE?',
+                    'Bagaimana mekanisme penganggaran program kerja terkait keamanan SPBE?',
+                    'Apakah sudah dilakukan evaluasi kinerja manajemen keamanan SPBE? Jika sudah bagaimana mekanisme evaluasi kinerja yang dilakukaan? Lampirkan laporan kegiatan evaluasi kinerja.',
+                    'Apakah sudah dilakukan perbaikan pada manajemen keamanan SPBE? Jika sudah bagaimana mekanisme perbaikan yang dilakukan? Lampirkan laporan kegiatan perbaikan.'
                 ],
-                'Manajemen Akses' => [
-                    'Apakah terdapat kebijakan manajemen akses yang jelas?',
-                    'Apakah autentikasi dua faktor diterapkan pada sistem kritikal?',
-                    'Apakah hak akses pengguna ditinjau secara berkala?'
+                'Standar Teknis Dan Prosedur Keamanan SPBE' => [
+                    'Apakah instansi anda sudah melakukan penentuan klasifikasi informasi? Dalam bentuk / instrumen hukum apa hal tersebut ditetapkan?',
+                    'Apakah penentuan klasifikasi informasi sudah mengatur mengenai mekanisme penanganan infromasi berdasarkan klasifikasi informasi? Dalam bentuk / instrumen hukum apa hal tersebut ditetapkan? Jika pedoman penentuan klasifikasi sudah menjelaskan hal ini, lampirkan pedoman yang dimaksud. Jika tidak dijelaskan di pedoman atau tidak memiliki pedoman tetapi sudah dilaksanakan, jelaskan hal yang dimaksud.',
+                    'Bagaimana instansi anda memastikan keutuhan dan keaslian dan/atau kenirsangkalan dari data/informasi?',
+                    'Bagaimana mekanisme dari instansi anda dalam hal menjamin data/informasi dapat selalu diakses oleh pengguna?',
+                    'Bagaimana mekanisme pencadangan data yang dilakukan oleh instansi anda?',
+                    'Bagaimana mekanisme dari instansi anda dalam hal sistem pemulihan (recovery) menjamin data/informasi?'
                 ],
-                'Keamanan Data' => [
-                    'Apakah data sensitif dienkripsi saat disimpan?',
-                    'Apakah terdapat mekanisme pencadangan data secara berkala?',
-                    'Apakah terdapat kebijakan pemulihan bencana untuk data?'
+                'Autentikasi' => [
+                    'Menggunakan manajemen kata sandi untuk proses autentikasi',
+                    'Menerapkan verifikasi kata sandi pada sisi server.',
+                    'Mengatur jumlah karakter, kombinasi jenis karakter, dan masa berlaku dari kata sandi.'
                 ],
-                'Kepatuhan dan Regulasi' => [
-                    'Apakah organisasi mematuhi standar keamanan informasi yang berlaku?',
-                    'Apakah terdapat kebijakan pengelolaan risiko keamanan informasi?',
-                    'Apakah dilakukan audit keamanan secara berkala?'
+                'Validasi Input' => [
+                    'Menerapkan fungsi validasi input pada sisi server.',
+                    'Menerapkan mekanisme penolakan input jika terjadi kesalahan validasi.',
+                    'Memastikan runtime environment aplikasi tidak rentan terhadap serangan validasi input.',
+                    'Melakukan validasi positif pada seluruh input.',
+                    'Melakukan filter terhadap data yang tidak dipercaya.',
+                    'Menggunakan fitur kode dinamis.',
+                    'Melakukan pelindungan terhadap akses yang mengandung konten skrip.',
+                    'Melakukan pelindungan dari serangan injeksi berbasis data.'
+                ],
+                'Keamanan Komunikasi' => [
+                    'Menggunakan protokol Secure Socket Layer / Transport Layer Security (TLS) pada saat pertukaran data.',
+                    'Memastikan kebijakan keamanan dalam mengelola komunikasi.',
+                    'Mengenkripsi data yang dikirimkan dalam jaringan publik.',
+                    'Melakukan pengujian kerentanan secara periodik.',
+                    'Menerapkan mekanisme pertukaran kunci untuk mengelola kunci simetris secara aman.',
+                    'Memiliki Certificate Authority (CA) untuk memvalidasi TLS certificate dari layanan third-party.',
+                    'Memastikan penggunaan algoritma kriptografi yang kuat.'
+                ],
+                'Manajemen Sesi' => [
+                    'Menggunakan pengendalian sesi untuk proses manajemen sesi.',
+                    'Menggunakan pengendalian sesi yang disediakan oleh kerangka kerja aplikasi.',
+                    'Mengatur pembuatan dan keacakan token sesi yang dihasilkan oleh pengendali sesi.',
+                    'Mengatur kondisi dan jangka waktu habis sesi.',
+                    'Validasi dan pencantuman session id.',
+                    'Pelindungan terhadap lokasi dan pengiriman token untuk sesi terautentikasi.',
+                    'Pelindungan terhadap duplikasi dan mekanisme persetujuan pengguna.'
+                ],
+                'Kontrol Akses' => [
+                    'Menetapkan otorisasi pengguna untuk membatasi kontrol akses.',
+                    'Mengatur peringatan terhadap bahaya serangan otomatis apabila terjadi akses yang bersamaan atau akses yang terus-menerus pada fungsi.',
+                    'Mengatur antarmuka pada sisi administrator.',
+                    'Mengatur verifikasi kebenaran token ketika mengakses data dan informasi yang dikecualikan.'
+                ],
+                'Kriptografi' => [
+                    'Menggunakan algoritma kriptografi, modul kriptografi, protokol kriptografi, dan kunci kriptografi.',
+                    'Melakukan autentikasi data yang dienkripsi.',
+                    'Menerapkan manajemen kunci kriptografi.',
+                    'Membuat angka acak yang menggunakan generator angka acak kriptografi.'
+                ],
+                'Eror dan Pencatatan Log' => [
+                    'Mengatur konten pesan yang ditampilkan ketika terjadi kesalahan.',
+                    'Menggunakan metode penanganan eror untuk mencegah kesalahan terprediksi dan tidak terduga serta menangani seluruh pengecualian yang tidak ditangani.',
+                    'Tidak mencantumkan informasi yang dikecualikan dalam pencatatan log.',
+                    'Mengatur cakupan log yang dicatat untuk mendukung upaya penyelidikan ketika terjadi insiden.',
+                    'Mengatur perlindungan log aplikasi dari akses dan modifikasi yang tidak sah.',
+                    'Melakukan enkripsi pada data yang disimpan untuk mencegah injeksi log.',
+                    'Melakukan sinkronisasi sumber waktu sesuai dengan zona waktu dan waktu yang benar.'
+                ],
+                'Proteksi Data' => [
+                    'Melakukan identifikasi dan penyimpanan salinan informasi yang dikecualikan.',
+                    'Melakukan pelindungan dari akses yang tidak sah terhadap informasi yang dikecualikan yang disimpan sementara dalam aplikasi.',
+                    'Melakukan pertukaran, penghapusan, dan audit informasi yang dikecualikan.',
+                    'Melakukan penentuan jumlah parameter.',
+                    'Memastikan data tersimpan dengan aman.',
+                    'Menentukan metode untuk menghapus dan mengekspor data sesuai permintaan pengguna.',
+                    'Membersihkan memori setelah tidak diperlukan.'
+                ],
+                'Pengendalian Kode Berbahaya' => [
+                    'Melakukan pemeriksaan kode berbahaya pada file yang diunggah.',
+                    'Mengatur ukuran file dalam proses unggah.',
+                    'Mengatur penyimpanan file dalam proses unggah.',
+                    'Mengatur penamaan ekstensi file yang diperbolehkan.',
+                    'Mengatur eksekusi file hasil unggahan.',
+                    'Mengatur pelindungan jalur unggah file.',
+                    'Mengatur penyimpanan file yang diunduh sebelum dibuka.'
+                ],
+                'Logika Bisnis' => [
+                    'Menerapkan batasan pada penggunaan aplikasi dalam satu waktu.',
+                    'Memastikan ketersediaan, pengembangan berkelanjutan, dan pemeliharaan sistem aplikasi.',
+                    'Menerapkan mekanisme batasan akses berdasarkan sumber daya.',
+                    'Menerapkan batasan pada proses transaksi.',
+                    'Menerapkan mekanisme pencegahan transaksi berulang.',
+                    'Menerapkan validasi pada status dan alur kerja aplikasi.',
+                    'Menerapkan verifikasi kebenaran dan konsistensi data.',
+                    'Melakukan pelindungan dari serangan Distributed Denial of Service.'
+                ],
+                'File' => [
+                    'Menggunakan struktur direktori dan hak akses yang telah ditentukan.',
+                    'Melakukan pemeriksaan ekstensi file ketika mengunduh file.',
+                    'Menggunakan jalur relatif dalam melakukan otorisasi file yang dibaca.',
+                    'Memastikan nama file tidak mengandung direktori dan karakter khusus.',
+                    'Menggunakan fungsi yang sesuai ketika bekerja dengan file.',
+                    'Menggunakan jalur absolut dalam memproses file yang akan diproses di penyimpanan.',
+                    'Menambahkan karakter yang aman untuk nama file penyimpanan.'
+                ],
+                'Keamanan API dan Web Service' => [
+                    'Menerapkan metode autentikasi yang sesuai dengan lingkungan aplikasi.',
+                    'Melakukan validasi parameter pada API dan data yang dikirimkan.',
+                    'Mengatur pembatasan akses terhadap API.',
+                    'Menggunakan standar API keamanan yang kuat.',
+                    'Menggunakan API gateway untuk mengelola API.',
+                    'Menerapkan pembatasan pada transaksi.',
+                    'Menggunakan metode Hash-Based Message Authentication Code untuk menandatangani pesan.'
+                ],
+                'Keamanan Konfigurasi' => [
+                    'Mengatur keamanan pada konfigurasi aplikasi.',
+                    'Mengatur keamanan pada konfigurasi server.',
+                    'Mengatur keamanan pada konfigurasi basis data.',
+                    'Memperbarui komponen dan dependensi.',
+                    'Menggunakan referensi dari pusat kontrol keamanan aplikasi web.',
+                    'Menetapkan peran dan fungsi keamanan pada implementasi aplikasi.',
+                    'Menerapkan lapisan pertahanan berlapis untuk keamanan.'
                 ]
             ];
 
@@ -832,25 +956,149 @@ class AuditController extends Controller
                 \Log::info('No questions found, creating default questions');
                 
                 $defaultQuestions = [
-                    'Keamanan Jaringan' => [
-                        'Apakah firewall telah dikonfigurasi dengan benar?',
-                        'Apakah terdapat mekanisme deteksi intrusi pada jaringan?',
-                        'Apakah enkripsi digunakan dalam komunikasi internal?'
+                    'Pedoman Manajemen Keamanan Informasi SPBE' => [
+                        'Apakah instansi anda sudah memiliki pedoman manajemen keamanan informasi?',
+                        'Apakah pedoman manajemen keamanan informasi sudah dikomunikasikan ke seluruh pegawai instansi?',
+                        'Apa saja ruang lingkup manajemen keamanan informasi pada pedoman manajemen keamanan informasi?',
+                        'Apakah pernah dilakukan identifikasi terkait isu internal keamanan informasi di dalam organisasi?',
+                        'Apakah pernah dilakukan identifikasi terkait isu eksternal keamanan informasi?',
+                        'Apakah sudah ada pembentukan tim koordinasi SPBE di instansi anda? Dalam bentuk / instrumen hukum apa penetapan tim koordinasi SPBE di instansi anda?',
+                        'Bagaimana metode dalam melakukan perencanaan (program kerja, dsb) keamanan SPBE?',
+                        'Apakah instansi anda sudah melakukan identifikasi risiko keamanan?',
+                        'Apakah instansi anda memiliki program kerja keamanan SPBE dan disusun berdaarka priortas?',
+                        'Apakah instansi anda sudah melakukan program kerja berupa edukasi keamanan SPBE?',
+                        'Apakah instansi anda sudah melakukan inventarisasi aset SPBE (data, informasi, aplikasi dan infrastuktur)?',
+                        'Apakah instansi anda sudah melakukan identifikasi kerentanan dan ancaman pada aset SPBE?',
+                        'Apakah instansi anda sudah melakukan penilaian risiko keamanan SPBE?',
+                        'Sebutkan program kerja keamanan SPBE yang terkait dengan peningkatan keamanan SPBE? Atau sebutkan nomor progam kerja-nya yang merujuk pada jawaban point 9?',
+                        'Sebutkan standar teknis dan prosedur keamanan yang dimiliki instansi anda?',
+                        'Apakah instansi anda sudah pernah melakukan pengujian fungsi keamanan pada aplikasi dan infrastruktur SPBE?',
+                        'Bagamana instansi anda dalam melakukan penanganan insiden keamanan?',
+                        'Apakah instansi anda menetapkan dokumen perencanaan beserta jadwal target realisasi program kerja keamanan SPBE pada tahun ini?',
+                        'Bagaimana mekanisme pemenuhan SDM terkait keamanan SPBE?',
+                        'Apakah sudah dilakukan identifikasi kompetensi SDM terkait keamanan SPBE?',
+                        'Apakah instnsi anda memiliki dokumen terkait daftar personil keamanan SPBE yang dimiliki saat ini, serta kompetensi masing-masing personil?',
+                        'Bagaimana mekanisme peningkatan kompetensi SDM terkait keamanan SPBE?',
+                        'Bagaimana mekanisme penganggaran program kerja terkait keamanan SPBE?',
+                        'Apakah sudah dilakukan evaluasi kinerja manajemen keamanan SPBE? Jika sudah bagaimana mekanisme evaluasi kinerja yang dilakukaan? Lampirkan laporan kegiatan evaluasi kinerja.',
+                        'Apakah sudah dilakukan perbaikan pada manajemen keamanan SPBE? Jika sudah bagaimana mekanisme perbaikan yang dilakukan? Lampirkan laporan kegiatan perbaikan.'
                     ],
-                    'Manajemen Akses' => [
-                        'Apakah terdapat kebijakan manajemen akses yang jelas?',
-                        'Apakah autentikasi dua faktor diterapkan pada sistem kritikal?',
-                        'Apakah hak akses pengguna ditinjau secara berkala?'
+                    'Standar Teknis Dan Prosedur Keamanan SPBE' => [
+                        'Apakah instansi anda sudah melakukan penentuan klasifikasi informasi? Dalam bentuk / instrumen hukum apa hal tersebut ditetapkan?',
+                        'Apakah penentuan klasifikasi informasi sudah mengatur mengenai mekanisme penanganan infromasi berdasarkan klasifikasi informasi? Dalam bentuk / instrumen hukum apa hal tersebut ditetapkan? Jika pedoman penentuan klasifikasi sudah menjelaskan hal ini, lampirkan pedoman yang dimaksud. Jika tidak dijelaskan di pedoman atau tidak memiliki pedoman tetapi sudah dilaksanakan, jelaskan hal yang dimaksud.',
+                        'Bagaimana instansi anda memastikan keutuhan dan keaslian dan/atau kenirsangkalan dari data/informasi?',
+                        'Bagaimana mekanisme dari instansi anda dalam hal menjamin data/informasi dapat selalu diakses oleh pengguna?',
+                        'Bagaimana mekanisme pencadangan data yang dilakukan oleh instansi anda?',
+                        'Bagaimana mekanisme dari instansi anda dalam hal sistem pemulihan (recovery) menjamin data/informasi?'
                     ],
-                    'Keamanan Data' => [
-                        'Apakah data sensitif dienkripsi saat disimpan?',
-                        'Apakah terdapat mekanisme pencadangan data secara berkala?',
-                        'Apakah terdapat kebijakan pemulihan bencana untuk data?'
+                    'Autentikasi' => [
+                        'Menggunakan manajemen kata sandi untuk proses autentikasi',
+                        'Menerapkan verifikasi kata sandi pada sisi server.',
+                        'Mengatur jumlah karakter, kombinasi jenis karakter, dan masa berlaku dari kata sandi.'
                     ],
-                    'Kepatuhan dan Regulasi' => [
-                        'Apakah organisasi mematuhi standar keamanan informasi yang berlaku?',
-                        'Apakah terdapat kebijakan pengelolaan risiko keamanan informasi?',
-                        'Apakah dilakukan audit keamanan secara berkala?'
+                    'Validasi Input' => [
+                        'Menerapkan fungsi validasi input pada sisi server.',
+                        'Menerapkan mekanisme penolakan input jika terjadi kesalahan validasi.',
+                        'Memastikan runtime environment aplikasi tidak rentan terhadap serangan validasi input.',
+                        'Melakukan validasi positif pada seluruh input.',
+                        'Melakukan filter terhadap data yang tidak dipercaya.',
+                        'Menggunakan fitur kode dinamis.',
+                        'Melakukan pelindungan terhadap akses yang mengandung konten skrip.',
+                        'Melakukan pelindungan dari serangan injeksi berbasis data.'
+                    ],
+                    'Keamanan Komunikasi' => [
+                        'Menggunakan protokol Secure Socket Layer / Transport Layer Security (TLS) pada saat pertukaran data.',
+                        'Memastikan kebijakan keamanan dalam mengelola komunikasi.',
+                        'Mengenkripsi data yang dikirimkan dalam jaringan publik.',
+                        'Melakukan pengujian kerentanan secara periodik.',
+                        'Menerapkan mekanisme pertukaran kunci untuk mengelola kunci simetris secara aman.',
+                        'Memiliki Certificate Authority (CA) untuk memvalidasi TLS certificate dari layanan third-party.',
+                        'Memastikan penggunaan algoritma kriptografi yang kuat.'
+                    ],
+                    'Manajemen Sesi' => [
+                        'Menggunakan pengendalian sesi untuk proses manajemen sesi.',
+                        'Menggunakan pengendalian sesi yang disediakan oleh kerangka kerja aplikasi.',
+                        'Mengatur pembuatan dan keacakan token sesi yang dihasilkan oleh pengendali sesi.',
+                        'Mengatur kondisi dan jangka waktu habis sesi.',
+                        'Validasi dan pencantuman session id.',
+                        'Pelindungan terhadap lokasi dan pengiriman token untuk sesi terautentikasi.',
+                        'Pelindungan terhadap duplikasi dan mekanisme persetujuan pengguna.'
+                    ],
+                    'Kontrol Akses' => [
+                        'Menetapkan otorisasi pengguna untuk membatasi kontrol akses.',
+                        'Mengatur peringatan terhadap bahaya serangan otomatis apabila terjadi akses yang bersamaan atau akses yang terus-menerus pada fungsi.',
+                        'Mengatur antarmuka pada sisi administrator.',
+                        'Mengatur verifikasi kebenaran token ketika mengakses data dan informasi yang dikecualikan.'
+                    ],
+                    'Kriptografi' => [
+                        'Menggunakan algoritma kriptografi, modul kriptografi, protokol kriptografi, dan kunci kriptografi.',
+                        'Melakukan autentikasi data yang dienkripsi.',
+                        'Menerapkan manajemen kunci kriptografi.',
+                        'Membuat angka acak yang menggunakan generator angka acak kriptografi.'
+                    ],
+                    'Eror dan Pencatatan Log' => [
+                        'Mengatur konten pesan yang ditampilkan ketika terjadi kesalahan.',
+                        'Menggunakan metode penanganan eror untuk mencegah kesalahan terprediksi dan tidak terduga serta menangani seluruh pengecualian yang tidak ditangani.',
+                        'Tidak mencantumkan informasi yang dikecualikan dalam pencatatan log.',
+                        'Mengatur cakupan log yang dicatat untuk mendukung upaya penyelidikan ketika terjadi insiden.',
+                        'Mengatur perlindungan log aplikasi dari akses dan modifikasi yang tidak sah.',
+                        'Melakukan enkripsi pada data yang disimpan untuk mencegah injeksi log.',
+                        'Melakukan sinkronisasi sumber waktu sesuai dengan zona waktu dan waktu yang benar.'
+                    ],
+                    'Proteksi Data' => [
+                        'Melakukan identifikasi dan penyimpanan salinan informasi yang dikecualikan.',
+                        'Melakukan pelindungan dari akses yang tidak sah terhadap informasi yang dikecualikan yang disimpan sementara dalam aplikasi.',
+                        'Melakukan pertukaran, penghapusan, dan audit informasi yang dikecualikan.',
+                        'Melakukan penentuan jumlah parameter.',
+                        'Memastikan data tersimpan dengan aman.',
+                        'Menentukan metode untuk menghapus dan mengekspor data sesuai permintaan pengguna.',
+                        'Membersihkan memori setelah tidak diperlukan.'
+                    ],
+                    'Pengendalian Kode Berbahaya' => [
+                        'Melakukan pemeriksaan kode berbahaya pada file yang diunggah.',
+                        'Mengatur ukuran file dalam proses unggah.',
+                        'Mengatur penyimpanan file dalam proses unggah.',
+                        'Mengatur penamaan ekstensi file yang diperbolehkan.',
+                        'Mengatur eksekusi file hasil unggahan.',
+                        'Mengatur pelindungan jalur unggah file.',
+                        'Mengatur penyimpanan file yang diunduh sebelum dibuka.'
+                    ],
+                    'Logika Bisnis' => [
+                        'Menerapkan batasan pada penggunaan aplikasi dalam satu waktu.',
+                        'Memastikan ketersediaan, pengembangan berkelanjutan, dan pemeliharaan sistem aplikasi.',
+                        'Menerapkan mekanisme batasan akses berdasarkan sumber daya.',
+                        'Menerapkan batasan pada proses transaksi.',
+                        'Menerapkan mekanisme pencegahan transaksi berulang.',
+                        'Menerapkan validasi pada status dan alur kerja aplikasi.',
+                        'Menerapkan verifikasi kebenaran dan konsistensi data.',
+                        'Melakukan pelindungan dari serangan Distributed Denial of Service.'
+                    ],
+                    'File' => [
+                        'Menggunakan struktur direktori dan hak akses yang telah ditentukan.',
+                        'Melakukan pemeriksaan ekstensi file ketika mengunduh file.',
+                        'Menggunakan jalur relatif dalam melakukan otorisasi file yang dibaca.',
+                        'Memastikan nama file tidak mengandung direktori dan karakter khusus.',
+                        'Menggunakan fungsi yang sesuai ketika bekerja dengan file.',
+                        'Menggunakan jalur absolut dalam memproses file yang akan diproses di penyimpanan.',
+                        'Menambahkan karakter yang aman untuk nama file penyimpanan.'
+                    ],
+                    'Keamanan API dan Web Service' => [
+                        'Menerapkan metode autentikasi yang sesuai dengan lingkungan aplikasi.',
+                        'Melakukan validasi parameter pada API dan data yang dikirimkan.',
+                        'Mengatur pembatasan akses terhadap API.',
+                        'Menggunakan standar API keamanan yang kuat.',
+                        'Menggunakan API gateway untuk mengelola API.',
+                        'Menerapkan pembatasan pada transaksi.',
+                        'Menggunakan metode Hash-Based Message Authentication Code untuk menandatangani pesan.'
+                    ],
+                    'Keamanan Konfigurasi' => [
+                        'Mengatur keamanan pada konfigurasi aplikasi.',
+                        'Mengatur keamanan pada konfigurasi server.',
+                        'Mengatur keamanan pada konfigurasi basis data.',
+                        'Memperbarui komponen dan dependensi.',
+                        'Menggunakan referensi dari pusat kontrol keamanan aplikasi web.',
+                        'Menetapkan peran dan fungsi keamanan pada implementasi aplikasi.',
+                        'Menerapkan lapisan pertahanan berlapis untuk keamanan.'
                     ]
                 ];
 
