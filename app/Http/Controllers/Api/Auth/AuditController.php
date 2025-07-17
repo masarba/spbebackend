@@ -202,9 +202,12 @@ class AuditController extends Controller
 
     private function getQualitativeLabel($rawScore)
     {
-        if ($rawScore >= 3) {
-           return 'Memadai';
-        } elseif ($rawScore >= 1) {
+        // Menghitung persentase berdasarkan skor maksimal 3
+        $percentage = ($rawScore / 3) * 100;
+        
+        if ($percentage >= 70) {
+            return 'Memadai';
+        } elseif ($percentage >= 40) {
             return 'Perlu Peningkatan';
         } else {
             return 'Tidak Memadai';
@@ -213,9 +216,9 @@ class AuditController extends Controller
 
     private function getTotalKesimpulan($totalScore)
     {
-        if ($totalScore >= 75) {
+        if ($totalScore >= 70) {
             return 'Memadai';
-        } elseif ($totalScore >= 30) {
+        } elseif ($totalScore >= 40) {
             return 'Perlu Peningkatan';
         } else {
             return 'Tidak Memadai';
@@ -247,7 +250,7 @@ class AuditController extends Controller
                 // Cari pertanyaan dari database
                 $questionData = Question::find($question['id']);
                 if ($questionData && isset($question['answer']) && $question['answer'] === 0) {
-                    $recommendations[] = "Improve the area: " . $questionData->question;
+                    $recommendations[] = "Perbaiki : " . $questionData->question;
                 }
             }
         }
